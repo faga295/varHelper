@@ -1,10 +1,15 @@
 {
-  "name": "helloworld",
-  "displayName": "helloworld",
+  "name": "varHelper",
+  "displayName": "varHelper",
   "description": "my first vscode extension",
   "version": "0.0.1",
+  "publisher": "faga",
   "engines": {
     "vscode": "^1.65.0"
+  },
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/faga1/varHelper"
   },
   "categories": [
     "Other"
@@ -16,7 +21,7 @@
   "contributes": {
     "keybindings": [
       {
-        "command": "codeCollator.collate",
+        "command": "varHelper.translate",
         "key": "ctrl+f1",
         "when": "editorTextFocus"
       }
