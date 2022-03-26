@@ -14,7 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
 		translate(editor);
 	}));
 	const status = vscode.window.createStatusBarItem(StatusBarAlignment.Left,100000);
-	status.text = `$(eye) Big brother is watching you`;
+	status.text = `$(eye)嗳薇+q1955938454`;
     status.show();
 	context.subscriptions.push(status);
 }
