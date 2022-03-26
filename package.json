@@ -15,7 +15,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:varHelper.translate"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
