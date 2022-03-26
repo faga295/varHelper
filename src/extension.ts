@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 import { StatusBarAlignment } from 'vscode';
 import { translate } from './translate';
+import { translateToZh } from './translate/toZh';
 import { update } from './statusBar/update';
 
 // this method is called when your extension is activated
@@ -10,13 +11,23 @@ import { update } from './statusBar/update';
 export function activate(context: vscode.ExtensionContext) {
 	const editor = vscode.window.activeTextEditor;
 	if(!editor) return;
-	context.subscriptions.push(vscode.commands.registerCommand(('varHelper.translate'),()=>{
-		translate(editor);
+	context.subscriptions.push(vscode.commands.registerCommand(('varHelper.translate'),async ()=>{
+		const trans_result = await translate(editor);
+		editor.edit((editBuilder)=>{
+			editBuilder.replace(editor.selection,trans_result.data[0].dst);
+		});
 	}));
 	const status = vscode.window.createStatusBarItem(StatusBarAlignment.Left,100000);
 	status.text = `$(eye)嗳薇+q1955938454`;
     status.show();
 	context.subscriptions.push(status);
+	context.subscriptions.push(vscode.languages.registerHoverProvider('*',{
+		async provideHover(){
+			const content = await translateToZh(editor);
+			console.log(content);
+			return new vscode.Hover(content);
+		}
+	}));
 }
 // this method is called when your extension is deactivated
 export function deactivate() {}
