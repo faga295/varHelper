@@ -28,6 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
 			return new vscode.Hover(content);
 		}
 	}));
+	
 }
 // this method is called when your extension is deactivated
 export function deactivate() {}
