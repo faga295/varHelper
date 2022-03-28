@@ -28,6 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
 			return new vscode.Hover(content);
 		}
 	}));
+	// context.subscriptions.push(vscode.languages.registerCodeActionsProvider('javascript',));
 	
 }
 // this method is called when your extension is deactivated

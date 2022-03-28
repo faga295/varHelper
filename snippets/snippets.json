@@ -5,6 +5,12 @@
       "body": ["😀 $1"],
       "description": "😀 grinning-face"
     },
+    "shabi-jx": {
+      "scope":"javascript,typescript,php,html,css,vue",
+      "prefix": "jx",
+      "body":["💩"],
+      "description":"second egg"
+    },
     "smiling-face-with-open-mouth": {
       "scope": "javascript,typescript,php,html,css,vue",
       "prefix": ":smiling-face-with-open-mouth",
