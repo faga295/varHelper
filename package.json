@@ -2,7 +2,7 @@
   "name": "varHelper",
   "displayName": "varHelper",
   "description": "my first vscode extension",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "publisher": "faga",
   "engines": {
     "vscode": "^1.65.0"
@@ -47,7 +47,8 @@
       {
         "language": "javascript",
         "path": "./snippets/snippets.json"
-      },{
+      },
+      {
         "language": "typescript",
         "path": "./snippets/snippets.json"
       }
