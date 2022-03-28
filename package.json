@@ -51,6 +51,18 @@
       {
         "language": "typescript",
         "path": "./snippets/snippets.json"
+      },
+      {
+        "language": "go",
+        "path": "./snippets/snippets.json"
+      },
+      {
+        "language": "python",
+        "path": "./snippets/snippets.json"
+      },
+      {
+        "language": "java",
+        "path": "./snippets/snippets.json"
       }
     ]
   },

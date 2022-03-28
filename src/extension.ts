@@ -4,7 +4,6 @@ import * as vscode from 'vscode';
 import { StatusBarAlignment } from 'vscode';
 import { translate } from './translate';
 import { translateToZh } from './translate/toZh';
-import { update } from './statusBar/update';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -28,8 +27,28 @@ export function activate(context: vscode.ExtensionContext) {
 			return new vscode.Hover(content);
 		}
 	}));
-	// context.subscriptions.push(vscode.languages.registerCodeActionsProvider('javascript',));
+	context.subscriptions.push(vscode.languages.registerCodeActionsProvider('javascript',new Emojier));
 	
+}
+
+class Emojier implements vscode.CodeActionProvider{
+	public provideCodeActions(document: vscode.TextDocument, range: vscode.Range | vscode.Selection, context: vscode.CodeActionContext, token: vscode.CancellationToken): vscode.CodeAction[] | undefined{
+		if(!this.startWithSmile(document,range)) return;
+		const result = [];
+		result.push(this.createAction(document,range,'😺'));
+		result.push(this.createAction(document,range,'💩'));
+		result.push(this.createAction(document,range,'😀'));
+		return result;
+	}
+	private startWithSmile(document: vscode.TextDocument, range: vscode.Range | vscode.Selection):Boolean{
+		return (document.getText(range)[0]===':'&&document.getText(range)[1]===')');
+	}
+	private createAction(document:vscode.TextDocument,range:vscode.Range,emoji:string){
+		const fix = new vscode.CodeAction(`convert to ${emoji}`,vscode.CodeActionKind.QuickFix);
+		fix.edit = new vscode.WorkspaceEdit;
+		fix.edit.replace(document.uri,new vscode.Range(range.start,range.start.translate(0,2)),emoji); 
+		return fix;
+	}
 }
 // this method is called when your extension is deactivated
 export function deactivate() {}
